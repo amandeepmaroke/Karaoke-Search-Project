@@ -10,3 +10,4 @@ pytest==8.3.2
 rsa==4.9
 sqlparse==0.5.1
 tzdata==2024.1
+django-environ==0.12.0
