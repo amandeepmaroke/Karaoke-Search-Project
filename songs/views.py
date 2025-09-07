@@ -2,10 +2,12 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, ListView
 from .models import Song
 from django.db.models import Q
+from django.http import HttpResponse
+from django.template import loader
 
 # Create your views here.
 class HomePageView(TemplateView):
-    template_name = 'home.html'
+    template_name = 'index.html'
 
 class SearchResultsView(ListView):
     model = Song

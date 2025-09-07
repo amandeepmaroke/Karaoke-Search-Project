@@ -1,32 +1,39 @@
 <!-- templates/search_results.html -->
-
+{% load static %}
+<!DOCTYPE HTML>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 {% if object_list|length == 1%}
-  <h1>{{ object_list|length }} song found for <i>"{{ query }}"</i></h1>
+  <h3>{{ object_list|length }} song found for <i>"{{ query }}"</i></h3>
 {% else %}
-  <h1>{{ object_list|length }} songs found for <i>"{{ query }}"</i></h1>
+  <h3>{{ object_list|length }} songs found for <i>"{{ query }}"</i></h3>
 {% endif %}
 
 <html>
-<head>
+  <head>        
+		<title>Steve-Oh Karaoke | Karaoke Jedi</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets\css\main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets\css\noscript.css' %}" /></noscript>
+	</head>
 <style>
-#customers {
+#songs {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
 
-#customers td, #customers th {
+#songs td, #songs th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
+#songs tr:nth-child(even){background-color: #f2f2f2;}
 
-#customers tr:hover {background-color: #ddd;}
+#songs tr:hover {background-color: #ddd;}
 
-#customers th {
+#songs th {
   position: sticky;
   top: 0px;  /* 0px if you don't have a navbar, but something is required */
   background: white;
@@ -37,23 +44,41 @@
   color: white;
 }
 </style>
-</head>
+
 <body>
 
-<table id="customers">
-  <tr>
-    <th>Artist</th>
-    <th>Title</th>
 
-  </tr>
-  {% for song in object_list %}
 
-  <td>{{ song.artist }}</td>
-  <td>{{ song.title }}</td>
-</tr>
-  {% endfor %}
+<!-- Table -->
+<section>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Artist</th>
+          <th>Title</th>
+      
+        </tr>
+      </thead>
+      <tbody>
+      </tr>
+      {% for song in object_list %}
+    
+      <td>{{ song.artist }}</td>
+      <td>{{ song.title }}</td>
+    </tr>
+      {% endfor %}
+        
+      </tfoot>
+    </table>
+  </div>
+  </section>
 
-</table>
+  <div style="text-align: center;">
+    <button onclick="window.location.href='/';">
+      Return Home
+    </button>
+  </div> 
 
 </body>
 </html>
